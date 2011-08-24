@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="BitMore">
+  <title>And a bit more</title>
+  <sect2>
+    <title>Eschew Repetition!</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            We are repeating <code>check ourConfig</code> 
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      <programlisting>
+ourCheck :: (Testable a) => a -> IO ()
+ourCheck = check ourConfig</programlisting>
+    </para>
+    <para>
+      Reload and run tests using <code>ourCheck</code>
+    </para>
+  </sect2>
+  <sect2>
+    <title>DeMorgan's Laws</title>
+    <para>
+      <programlisting>
+demorgan1 p q = not (p &amp;&amp; q) == ((not p) || (not q))
+demorgan2 p q = not (p || q) == ((not p) &amp;&amp; (not q))</programlisting>
+    </para>
+    <para>
+      <programlisting>
+Main> ourCheck `mapM_` [demorgan1, demorgan2]
+OK, passed 500 tests.
+OK, passed 500 tests.</programlisting>
+    </para>
+  </sect2>
+</sect1>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="CustomDataType">
+  <title>Custom Data Type</title>
+  <sect2>
+    <title>Quantifying over our own type</title>
+    <para>
+      Suppose we have our own data type such as
+      <programlisting>
+data Person = P {
+  age :: Int,
+  firstName :: String,
+  surname :: String,
+  gender :: Char
+} deriving Show</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>A function accepting Person</title>
+    <para>
+      Let's sum the ages of the people
+      <programlisting>
+sumAges :: [Person] -> Int
+sumAges = sum . map age</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Write a property</title>
+    <para>
+      For any list of <code>Person</code> (ps) subtracting their ages from (<code>sumAges ps</code>) equals zero
+      <programlisting>
+testSumAges ps = foldl' (-) (sumAges ps) (age `map` ps) == 0</programlisting>
+    </para>
+    <para>
+      Oh?
+      <programlisting>
+Main> ourCheck testSumAges
+  No instance for (Arbitrary Person)</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Arbitrary Person</title>
+    <para>
+      The type checker is asking for an instance of the <code>Arbitrary</code> type-class for <code>Person</code>
+    </para>
+    <para>
+      Introducing some very interesting functions
+      <programlisting>
+(>>=) :: Gen a -> (a -> Gen b) -> Gen b
+return :: t -> Gen t</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Using an existing Arbitrary</title>
+    <para>
+      We can use the <code>Arbitrary</code> implementation for <code>Bool</code> to create an <code>Arbitrary</code> for a gender of 'm' or 'f'
+      <programlisting>
+arbGender :: Gen Char
+arbGender = arbitrary >>= \b -> return (if b then 'f' else 'm')</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>In fact</title>
+    <para>
+      We can use the <code>Arbitrary</code> implementation for the components of <code>Person</code> to create the <code>Arbitrary</code> for <code>Person</code>
+      <programlisting>
+instance Arbitrary Person where
+  arbitrary = arbitrary >>= \a ->
+              arbitrary >>= \f ->
+              arbitrary >>= \s ->
+              arbGender >>= \g ->
+              return (P a f s g)
+  coarbitrary = undefined -- todo another day</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>In double fact</title>
+    <para>
+      There is special language syntax built-in for this programming pattern<footnote><para>Note that <code>do</code> and <code>&lt;-</code> are keywords</para></footnote>
+      <programlisting>
+instance Arbitrary Person where
+  arbitrary = do a &lt;- arbitrary
+                 f &lt;- arbitrary
+                 s &lt;- arbitrary
+                 g &lt;- arbGender
+                 return (P a f s g)
+  coarbitrary = undefined</programlisting>
+    </para>
+  </sect2>
+</sect1>

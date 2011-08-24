@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="TDD">
+  <title>Test Driven Development for clever people</title>
+  <sect2>
+    <title>TDD</title>
+    <para>
+      Suppose
+      <programlisting>
+f :: [a] -> [a]
+f = undefined</programlisting>
+    </para>
+    <para>
+      Now make the following property pass
+      <programlisting>
+property1 = f "" == ""</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Now this one</title>
+    <para>
+      Make this one pass as well
+      <programlisting>
+property2 x = f [x] == [x]</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>And finally</title>
+    <para>
+      Make this one pass
+      <programlisting>
+property3 x y = f (x ++ y) == f y ++ f x</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Correctness guarantees</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            If your tests always pass, then your function should be reversing the given list <emphasis>guaranteed</emphasis>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            All your functions are <emphasis>extensionally equivalent</emphasis>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Unfortunately we cannot get exhaustive testing for the general program (equivalent to solving Turing Halting Problem)
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Non-total</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Haskell is practical for general purpose programming -- non-total like most languages you have probably encountered
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Observe that we have <emphasis>tests as documentation</emphasis> -- there is nothing more we can write! These are the unambiguous and only essential elements of the <code>reverse</code> function
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <code>f :: [a] -> [a]</code>
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <code>f [] = []</code>
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <code>forall x. f [x] = [x]</code>
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <code>forall x y. f (x ++ y) = f y ++ f x</code>
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Now try this one</title>
+    <para>
+      <programlisting>
+g :: (a -> b) -> (b -> c) -> (a -> c)
+g = undefined</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Only one person lives here</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            If your implementation guarantees termination and does not throw an exception, then you all have the same function
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            It is <emphasis role="bold">impossible</emphasis> to write tests for this function since they would be redundant, due to the static guarantees given by the type system!
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            The given type signature is called <emphasis>once-inhabited</emphasis> since there is only one inhabitant, its only implementation
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Aim for static guarantees first, concede to automated testing second -- clumsy manual testing under (very) exceptional circumstances, weak typing under even more exceptional circumstances
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+</sect1>

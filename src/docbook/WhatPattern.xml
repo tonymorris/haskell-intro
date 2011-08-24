@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="WhatPattern">
+  <title>What Pattern?</title>
+  <sect2>
+    <title>Name?</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Does this pattern have a name?
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Have I seen it before?
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            I told a lie <code>(>>=) :: m a -> (a -> m b) -> m b</code>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Java?</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Java has two specific instances of this pattern<footnote><para><code>(>>=) :: m a -> (a -> m b) -> m b</code></para></footnote> built right in
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <code>;</code> keyword (semi-colon) <code>Effect a -> (a -> Effect b) -> Effect b</code>
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <code>throws</code> keyword <code>(Either Throwable) a -> (a -> (Either Throwable) b) -> (Either Throwable) b</code>
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+  <sect2>
+    <title>But that's for another day :)</title>
+    <para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="resources/haskell-logo.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>      
+    </para>
+  </sect2>
+</sect1>

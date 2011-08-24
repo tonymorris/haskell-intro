@@ -1,10 +1,49 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
 
-<!DOCTYPE articleinfo PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-    "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-
-<articleinfo id="DocbookDocumentInfo" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <xi:include href="articleinfo/author/tony.xml"/>
-  <xi:include href="articleinfo/copyright.xml"/>
-  <title id="Title">Docbook Document</title>
+<articleinfo id="ArticleHeader">
+  <abstract id="Abstract">
+    <para>
+      This article is intended as a presentation for an introduction to advanced programming concepts using Haskell.
+      This presentation introduces automated specification-based testing.
+    </para>
+    <para>
+      This presentation is hands-on and requires each member of the audience have access to a computer running the
+      Glasgow Haskell Compiler (GHC) which is available from <ulink url="http://haskell.org/ghc"/>.
+    </para>
+    </abstract>
+  <author id="Author">
+    <firstname>Tony</firstname>
+    <surname>Morris</surname>
+    <address>
+      <email>tmorris@tmorris.net</email>
+      <city>Brisbane</city>
+      <state>Queensland</state>
+      <country>Australia</country>
+    </address>
+  </author>
+  <copyright id="Copyright">
+    <year>2009</year>
+    <holder>
+      Tony Morris
+    </holder>
+  </copyright>
+  <revhistory id="RevHistory">
+    <revision>
+      <revnumber>
+        $LastChangedRevision: 1938 $
+      </revnumber>
+      <date>
+        $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+      </date>
+      <revremark>
+        Initial authoring
+      </revremark>
+    </revision>
+  </revhistory>
+  <title id="Title">Advanced Programming Concepts using Haskell</title>
+  <subtitle id="Subtitle">An introduction</subtitle>
 </articleinfo>

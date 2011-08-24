@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="Implication">
+  <title>Implication</title>
+  <sect2>
+    <title>==></title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Sometimes there are values we do not wish to use in the test
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            If there are too many of those values, we may be best to use a different type
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            However, if there are only a few of those values, we can use the <code>==></code> function
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+  <sect2>
+    <title>See a problem?</title>
+    <para>
+      <programlisting>
+divisionInverse a b = (a `div` b) * b + (a `mod` b) == a</programlisting>
+    </para>
+    <para>
+      <programlisting>
+Main> ourCheck divisionInverse
+*** Exception: divide by zero</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Fixed!</title>
+    <para>
+      <programlisting>
+divisionInverse' a b = b /= 0 ==> (a `div` b) * b + (a `mod` b) == a</programlisting>
+    </para>
+    <para>
+      <programlisting>
+Main> ourCheck divisionInverse'
+OK, passed 500 tests.</programlisting>
+    </para>
+  </sect2>
+</sect1>

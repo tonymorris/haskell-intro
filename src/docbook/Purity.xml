@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="Purity">
+  <title>A note on purity</title>
+  <sect2>
+    <title>Purity</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Leads to composition and abstraction
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Has other far reaching implications that we will only allude to today
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      See a problem?
+      <programlisting>
+if(itRocks) println("boo") else println("bar")</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Improved code</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <programlisting>
+println(if(itRocks) "boo" else "bar")</programlisting>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            We have a pure expression <code>if(itRocks) "boo" else "bar"</code> wrapped in a <emphasis>side-effect</emphasis> <code>println</code>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            This is preferable to intertwining pure expression and side-effect as we had earlier
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            This approach is what allows us to achieve high reusability and composition and automate testing!
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+</sect1>

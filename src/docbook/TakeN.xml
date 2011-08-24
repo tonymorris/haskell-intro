@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="TakeN">
+  <title>Take n</title>
+  <sect2>
+    <title>take</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <code>take</code> is a function that accepts an integer value and a list and returns a list
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <code>take :: Int -> [a] -> [a]</code>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Experiment with the <code>take</code> function
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Take One</title>
+    <para>
+      See a problem?
+      <programlisting>
+testTake :: String -> Bool
+testTake s = length (take 5 s) == 5</programlisting>
+    </para>
+    <para>
+      <programlisting>
+Main> ourCheck testTake
+Falsifiable, after 0 tests:
+""</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Take Two</title>
+    <para>
+      <programlisting>
+testTake' :: String -> Bool
+testTake' s = length (take 5 s) &lt;= 5</programlisting>
+      Better!
+      <programlisting>
+Main> ourCheck testTake'
+OK, passed 500 tests.</programlisting>
+    </para>
+  </sect2>
+</sect1>

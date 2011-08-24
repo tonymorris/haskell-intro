@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="LetsGo">
+  <title>Let's Go!</title>
+  <sect2>
+    <title>Source file</title>
+    <para>
+      Open a text editor to a file called <code>Testing.hs</code> and enter
+      <programlisting language="Haskell">
+import Test.QuickCheck
+import Data.Char
+import Data.List
+
+ourConfig = defaultConfig {
+  -- we'll override the default of 100, for kicks
+  configMaxTest = 500
+}</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Load the file</title>
+    <para>
+      At <code>ghci</code> load the file:
+      <programlisting>
+Prelude> :load ./Testing.hs
+[1 of 1] Compiling Main             ( Testing.hs, interpreted )
+Ok, modules loaded: Main.</programlisting>
+    </para>
+    <para>
+      Is <code>True</code> true?
+      <programlisting>
+Main> check ourConfig True
+OK, passed 500 tests.</programlisting>
+    </para>
+  </sect2>
+</sect1>

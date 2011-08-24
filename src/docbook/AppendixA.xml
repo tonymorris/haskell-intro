@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<appendix id="AppendixA">
+  <title>Testing.hs</title>
+  <para>
+    <programlisting>
+import Test.QuickCheck
+import Data.Char
+import Data.List
+
+ourConfig = defaultConfig {
+  -- we'll override the default of 100, for kicks
+  configMaxTest = 500
+}
+
+-- forall x. x * 1 == x
+multiplicativeIdentity x = x * 1 == x
+
+-- forall a b. a + b == b + a
+additionCommutes a b = a + b == b + a
+
+ourCheck :: (Testable a) => a -> IO ()
+ourCheck = check ourConfig
+
+-- DeMorgan's Law (1)
+demorgan1 p q = not (p &amp;&amp; q) == ((not p) || (not q))
+
+-- DeMorgan's Law (2)
+demorgan2 p q = not (p || q) == ((not p) &amp;&amp; (not q))
+
+-- fails (subtraction is not commutative)
+subtractionCommutes a b = a - b == b - a
+
+-- fails
+testTake :: String -> Bool
+testTake s = length (take 5 s) == 5
+-- fixed
+testTake' :: String -> Bool
+testTake' s = length (take 5 s) &lt;= 5
+
+-- division by zero
+divisionInverse a b = (a `div` b) * b + (a `mod` b) == a
+-- fixed
+divisionInverse' a b = b /= 0 ==> (a `div` b) * b + (a `mod` b) == a
+
+-- TDD
+f :: [a] -> [a]
+f = undefined
+
+-- this is a tad perverse
+property1 :: Bool
+property1 = f "" == ""
+
+property2 :: Int -> Bool
+property2 x = f [x] == [x]
+
+property3 :: [Int] -> [Int] -> Bool
+property3 x y = f (x ++ y) == f y ++ f x
+
+-- once-inhabited
+g :: (a -> b) -> (b -> c) -> (a -> c)
+g = undefined
+
+instance Show (a -> b) where
+  show _ = "&lt;&lt;function>>"
+
+-- mocking (generating functions)
+testMap :: (Bool -> String) -> (Int -> Bool) -> [Int] -> Bool
+testMap f g x = map (f . g) x == map f (map g x)
+
+-- create your own Arbitrary
+
+data Person = P {
+  age :: Int,
+  firstName :: String,
+  surname :: String,
+  gender :: Char
+} deriving Show
+
+sumAges :: [Person] -> Int
+sumAges = sum . map age
+
+-- for any list of Person (ps) subtracting their ages from (sumAges ps) equals zero
+testSumAges ps = foldl' (-) (sumAges ps) (age `map` ps) == 0
+
+instance Arbitrary Char where
+    arbitrary = choose ('\32', '\128')
+    coarbitrary c = variant (ord c `rem` 4)
+
+-- (>>=) :: Gen a -> (a -> Gen b) -> Gen b
+-- return :: a -> Gen a
+
+arbGender :: Gen Char
+arbGender = arbitrary >>= \b -> return (if b then 'f' else 'm')
+
+instance Arbitrary Person where
+  arbitrary = arbitrary >>= \a ->
+              arbitrary >>= \f ->
+              arbitrary >>= \s ->
+              arbGender >>= \g ->
+              return (P a f s g)
+
+{-
+  arbitrary = do a &lt;- arbitrary
+                 f &lt;- arbitrary
+                 s &lt;- arbitrary
+                 g &lt;- arbGender
+                 return (P a f s g)
+-}
+
+  -- todo We won't have time to discuss this function.
+  -- It is used for generating functions (where Person appears in the argument list).
+  coarbitrary = undefined</programlisting>
+  </para>
+</appendix>

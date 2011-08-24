@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="OurFirstProperty">
+  <title>Our First Property</title>
+  <sect2>
+    <title>Multiplicative Right Identity</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Suppose we write a function called <code>*</code> which multiplies two numbers
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            For all possible values of x, then x * 1 == x
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      Add to our source file
+      <programlisting>
+multiplicativeIdentity x = x * 1 == x</programlisting>
+      Then reload and run 500 tests
+      <programlisting>
+Main> :reload
+Ok, modules loaded: Main.
+*Main> check ourConfig multiplicativeIdentity
+OK, passed 500 tests.</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Let's do it again</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            For all possible values of a and b, then a + b == b + a
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+      Add to our source file
+      <programlisting>
+additionCommutes a b = a + b == b + a</programlisting>
+      Then reload and run 500 tests
+      <programlisting>
+Main> :reload
+Ok, modules loaded: Main.
+*Main> check ourConfig additionCommutes
+OK, passed 500 tests.</programlisting>      
+    </para>
+  </sect2>
+</sect1>

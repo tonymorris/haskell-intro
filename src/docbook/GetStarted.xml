@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="GetStarted">
+  <title>Get Started</title>
+  <sect2>
+    <title>Are we good to go?</title>
+    <para>
+      <programlisting>
+$ ghci
+GHCi, version 6.10.2: http://www.haskell.org/ghc/  :? for help
+Prelude> length [Test.QuickCheck.variant]
+1</programlisting>
+    </para>
+    <para>
+      Uh oh
+      <programlisting>
+Not in scope: `Test.QuickCheck.variant'</programlisting>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Haskell</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Haskell is a <emphasis>purely-functional, lazy-by-default, statically-typed, type-inferred</emphasis> programming language
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            In contrast, Scala is an <emphasis>impure, strict-by-default, statically-typed, (somewhat) type-inferred, (somewhat) functional</emphasis> programming language
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Java (C, C++, C#, Python, Ruby, Groovy, etc.) is an <emphasis>impure, strict-by-force, (somewhat -- ok not really) statically-typed, (emphatically) imperative</emphasis> programming language
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Pure? Lazy?</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          In a purely-functional language, each function may produce results by using only its arguments
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          To access files, network or print, each function must denote this in the type (IO)
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The function <code>length :: [a] -> Int</code> acts only on the given list to produce an integer value
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The function <code>readFile :: FilePath -> IO String</code> acts on the given file-path, I/O and produces a string
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Function arguments are evaluated as they are needed <emphasis>call-by-need</emphasis>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+  <sect2>
+    <title>Automated testing</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Manual testing: JUnit, NUnit, TestNG -- poor coverage, clumsy, laborious, error-prone
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Automated testing: <emphasis role="bold">QuickCheck</emphasis>, ScalaCheck, Functional Java, FsCheck
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Automated testing: Correctness verification for smart people
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+</sect1>

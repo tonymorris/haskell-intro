@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="LetsGetItWrong">
+  <title>Let's Get It Wrong</title>
+  <sect2>
+    <title>Subtraction Commutes</title>
+    <para>
+      <programlisting>
+subtractionCommutes a b = a - b == b - a</programlisting>
+      Does it?
+      <programlisting>
+Main> ourCheck subtractionCommutes
+Falsifiable, after 1 tests:
+1
+-2</programlisting>
+    </para>
+    <para>
+      Subtraction does not commute and we are given a counter-example (a=1, b=-2)
+    </para>
+  </sect2>
+</sect1>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $LastChangedRevision: 1938 $
+    $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
+-->
+
+<sect1 id="Mocking">
+  <title>Mocking</title>
+  <sect2>
+    <title>Mocking for clever programmers</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Automated generation of <quote>interface</quote> implementations
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Mocking is essentially quantifying over functions e.g. for any function f then p holds
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Let's try it</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <code>map</code> is a function that applies a function to each element of a list to produce a new list 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <programlisting>
+Main> :type map
+map :: (a -> b) -> [a] -> [b]</programlisting>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            For any two functions (f and g) then map with a function that applies g then f to each element is equivalent to map each element with g then map each element of the result with f
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+  <sect2>
+    <title>Really?</title>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <programlisting>
+testMap :: (Bool -> String) -> (Int -> Bool) -> [Int] -> Bool
+testMap f g x = map (f . g) x == map f (map g x)</programlisting>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <footnote>
+              <para>
+                You will also need
+                <programlisting>
+instance Show (a -> b) where
+  show _ = "&lt;&lt;function>>"</programlisting>
+              </para>
+            </footnote>
+            <programlisting>
+Main> ourCheck testMap
+OK, passed 500 tests.</programlisting>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </sect2>
+</sect1>
