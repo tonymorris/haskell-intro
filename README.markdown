@@ -1,7 +1,7 @@
-Docbook Document
-================
+Advanced Programming Concepts using Haskell
+===========================================
 
-A template from which to create a Docbook document.
+Slides from a presentation introducing Haskell and programming concepts.
 
 Setting up
 ==========

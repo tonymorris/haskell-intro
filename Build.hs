@@ -5,5 +5,5 @@ import Build.Document
 c :: 
   Config
 c = 
-  defaultConfig "docbook-document" "Docbook Document"
+  defaultConfig "haskell-intro" "Advanced Programming Concepts using Haskell"
 
