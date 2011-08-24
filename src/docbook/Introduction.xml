@@ -4,6 +4,7 @@
     "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 
 <sect1 id="Introduction">
+  <title>Introduction</title>
   <para>
     <emphasis>Sometimes asking #haskell for help can be like taking a drink from a fire hose -- Brent Yorgey</emphasis>
   </para>

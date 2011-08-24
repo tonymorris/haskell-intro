@@ -1,41 +1,25 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-    "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
     "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-    <!ENTITY articleinfo SYSTEM "articleinfo.xml">
-    <!ENTITY Introduction SYSTEM "Introduction.xml">
-    <!ENTITY GetStarted SYSTEM "GetStarted.xml">
-    <!ENTITY Purity SYSTEM "Purity.xml">
-    <!ENTITY LetsGo SYSTEM "LetsGo.xml">
-    <!ENTITY OurFirstProperty SYSTEM "OurFirstProperty.xml">
-    <!ENTITY BitMore SYSTEM "BitMore.xml">
-    <!ENTITY LetsGetItWrong SYSTEM "LetsGetItWrong.xml">
-    <!ENTITY TakeN SYSTEM "TakeN.xml">
-    <!ENTITY Implication SYSTEM "Implication.xml">
-    <!ENTITY TDD SYSTEM "TDD.xml">
-    <!ENTITY Mocking SYSTEM "Mocking.xml">
-    <!ENTITY CustomDataType SYSTEM "CustomDataType.xml">
-    <!ENTITY WhatPattern SYSTEM "WhatPattern.xml">
-    <!ENTITY AppendixA SYSTEM "AppendixA.xml">
-  ]>
+    <!ENTITY % local.common.attrib
+               "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2001/XInclude'">
+]>
 
-<article>
-  &articleinfo;
-  &Introduction;
-  &GetStarted;
-  &Purity;
-  &LetsGo;
-  &OurFirstProperty;
-  &BitMore;
-  &LetsGetItWrong;
-  &TakeN;
-  &Implication;
-  &TDD;
-  &Mocking;
-  &CustomDataType;
-  &WhatPattern;
-  &AppendixA;
+<article xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="articleinfo.xml"/>
+  <xi:include href="Introduction.xml"/>
+  <xi:include href="GetStarted.xml"/>
+  <xi:include href="Purity.xml"/>
+  <xi:include href="LetsGo.xml"/>
+  <xi:include href="OurFirstProperty.xml"/>
+  <xi:include href="BitMore.xml"/>
+  <xi:include href="LetsGetItWrong.xml"/>
+  <xi:include href="TakeN.xml"/>
+  <xi:include href="Implication.xml"/>
+  <xi:include href="TDD.xml"/>
+  <xi:include href="Mocking.xml"/>
+  <xi:include href="CustomDataType.xml"/>
+  <xi:include href="WhatPattern.xml"/>
+  <xi:include href="AppendixA.xml"/>
 </article>
