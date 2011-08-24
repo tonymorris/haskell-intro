@@ -30,19 +30,6 @@
       Tony Morris
     </holder>
   </copyright>
-  <revhistory id="RevHistory">
-    <revision>
-      <revnumber>
-        $LastChangedRevision: 1938 $
-      </revnumber>
-      <date>
-        $LastChangedDate: 2010-03-10 20:50:58 +1000 (Wed, 10 Mar 2010) $
-      </date>
-      <revremark>
-        Initial authoring
-      </revremark>
-    </revision>
-  </revhistory>
   <title id="Title">Advanced Programming Concepts using Haskell</title>
   <subtitle id="Subtitle">An introduction</subtitle>
 </articleinfo>
